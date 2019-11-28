@@ -5,7 +5,7 @@
     font-family: 'Baskervville', serif;
 }
 body{
-    background-color: rgb(58, 58, 58);
+    background-color: rgb(63, 63, 63);
 }
 header{
    background-color: #460000;
@@ -47,4 +47,24 @@ header div{
     position: relative;
     left: 400px;
     bottom: 20px;
+}
+main{
+    background-color: #ccc;
+    color: black;
+    margin: 40px 70px;
+}
+h2{
+    background-color: white;
+    width: 250px;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    left: 30px;
+}
+p{
+    padding: 60px 30px 30px;
+    text-align: justify;
+}
+form{
+    text-align: center;
 }
