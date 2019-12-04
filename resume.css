@@ -1,0 +1,21 @@
+.container{
+    text-align: center;
+    padding: 2em;
+    margin-bottom: 15em;
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: left;
+}
+td{
+    padding-left: .5em;
+}
+.textof{
+    background-color: #a5a5a5;
+    font-variant: bold;
+    color: white;
+    padding: .5em 0;
+}

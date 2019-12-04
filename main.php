@@ -1,32 +1,29 @@
 <!doctype html>
 <html>
 <head>
-    <title>Graduades</title>
+    <title>Graduades - Home</title>
 
     <meta charset="utf-8">   
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-<style>
-    main div{
-        box-shadow: 0 5px 15px rgba(0,0,0,.5);
-    }
-</style>
+
 <body>
 <header>
     <h3>Data of graduated</h3>
     <div>
     <ul>
         <li><a href="main.php">Home</a></li>
-        <li><a href="addUser.php">Add user</a></li>
+        <li><a href="addUser_v.php">Add user</a></li>
         <li><a href="addDivision.php">Add division</a></li>
-        <li><a href="main.php">Database</a></li>
-        <li><a href="main.php">Resume</a></li>
+        <li><a href="assign.php">Assign user to division</a></li>
+        <li><a href="addWorkplace.php">Add workplace</a></li>
+        <li><a href="resume.php">Resume</a></li>
     </ul>
     </div>
 </header>
 <main>
-    <div>
+    <div class="box">
     <h2>Why our system?</h2>
     <p> 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate pellentesque nisi, sit amet finibus lacus semper quis. Maecenas efficitur tincidunt ipsum eget volutpat. Morbi ac velit sapien. 
@@ -49,7 +46,18 @@
  </div>
 </main>
 <footer>
-
+    <div class="info">
+        <ul>
+            <li>About us</li>
+            <li>Where we are?</li>
+            <li>Our best example</li>
+        </ul>
+    </div>
+    <div class="line"></div>
+    <div class="text">
+        Curabitur sit amet blandit libero, ut vehicula erat. Vestibulum eget fermentum eros. Nulla sit amet rutrum nisi. Praesent vel nisl nec dolor sagittis auctor. Sed sit amet mauris enim. 
+        Nulla gravida commodo tellus non accumsan. Ut non enim sed nibh pharetra vulputate.
+    </div>
 </footer>
 </body>
 </html>

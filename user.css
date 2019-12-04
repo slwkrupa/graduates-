@@ -1,0 +1,32 @@
+.container{
+    background-color: rgb(105, 105, 105);
+    width: 100em;
+    margin-left: auto;
+    margin-right: auto;
+}
+.left{
+    width: 25rem;
+    display: inline-block;
+    text-align: right;
+    margin-left: 25rem;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    color: white;
+}
+.right{
+    width: 25rem;
+    display: inline-block;
+    text-align: left;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+input[type="submit"]{
+    margin-left: 50rem;
+    margin-bottom: 3em;
+    width: 5em;
+    background-color: #460000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em 1em;
+}

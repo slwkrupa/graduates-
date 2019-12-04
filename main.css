@@ -9,15 +9,16 @@ body{
 }
 header{
    background-color: #460000;
-   height: 80px;
+   height: 5rem;
 }
 h3{
-    width: 300px;
-    position: relative;
-    left: 300px;
-    top: 20px;
-    font-size: 30px;
+    width: 10em;
+    text-align: center;
+    font-size: 2.2em;
     color: #FBCEB5;
+    position: relative;
+    top: .5em;
+    left: 7em;
 }
 a{
     text-decoration: none;
@@ -26,7 +27,7 @@ a{
 }
 li{
     display: inline-block;
-    padding: 10px;
+    padding: .5em;
     border-bottom: 0.5px solid #FF756B; 
     list-style-type: none; 
     cursor: pointer;
@@ -40,31 +41,61 @@ li:hover{
     border-bottom: 1.5px solid #F85C50;
 }
 header div{
-    width: 600px;
+    width: 50rem;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     position: relative;
-    left: 400px;
-    bottom: 20px;
+    bottom: 1.8em;
+    left: 15em;
 }
 main{
     background-color: #ccc;
-    color: black;
-    margin: 40px 70px;
+    width: 100rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4em;
+}
+.box{
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
 }
 h2{
     background-color: white;
-    width: 250px;
+    width: 10em;
     text-align: center;
     position: relative;
-    top: 30px;
-    left: 30px;
+    top: 1em;
+    left: 1em;
 }
 p{
     padding: 60px 30px 30px;
     text-align: justify;
 }
-form{
+footer{
+    height: 12rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(31, 30, 30);
     text-align: center;
+}
+footer div{
+    color: white;
+    display: inline-block;
+    text-align: center;
+}
+.line{
+    border-left:1px solid rgb(110, 110, 110); 
+    height: 10em; 
+    width: 0;
+    position: relative;
+    top: 1em;
+}
+footer .text{
+    width: 25rem;
+}
+footer .info{
+    position: relative;
+    bottom: 4rem;
+    right: 2rem;
 }

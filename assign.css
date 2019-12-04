@@ -1,0 +1,37 @@
+table{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+th{
+    background-color: rgb(129, 129, 129);
+    padding: .5em 1em;
+}
+td{
+    background-color: white;
+    width: 10em;
+}
+tr:hover td{
+    background-color: #eeeeee;
+}
+.list{
+    text-align: center;
+    width: 50rem;
+    margin-left: 25em;
+    margin-bottom: 1em;
+    padding-top: 1em;
+}
+.searching{
+    background-color: orange;
+    text-align: center;
+}
+input[type="submit"]{
+    margin-left: 48rem;
+    margin-bottom: 3em;
+    width: 5em;
+    background-color: #460000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em 1em;
+}

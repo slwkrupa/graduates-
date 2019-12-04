@@ -1,30 +1,14 @@
 <!doctype html>
 <html>
 <head>
-    <title>Graduades</title>
+    <title>Add User</title>
 
     <meta charset="utf-8">   
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="user.css">
 </head>
 <style>
-    main div{
-        display: inline-block;
-    }
-    .container{
-
-    }
-    .left{
-        margin-left: 500px;
-        text-align: right;
-    }
-    .right{
-        text-align: left;
-    }
-    input[type="submit"]{
-        margin-left: 500px;
-        text-align: center;
-    }
 </style>
 <body>
 <header>
@@ -32,14 +16,15 @@
     <div>
     <ul>
         <li><a href="main.php">Home</a></li>
-        <li><a href="addUser.php">Add user</a></li>
+        <li><a href="addUser_v.php">Add user</a></li>
         <li><a href="addDivision.php">Add division</a></li>
-        <li><a href="main.php">Database</a></li>
-        <li><a href="main.php">Resume</a></li>
+        <li><a href="assign.php">Assign user to division</a></li>
+        <li><a href="addWorkplace.php">Add workplace</a></li>
+        <li><a href="resume.php">Resume</a></li>
     </ul>
     </div>
 </header>
-<main>
+<main class="box">
 <div class="container">
 <div class="left">
     Kind of person you want to add <br/>
@@ -49,7 +34,6 @@
     Email <br/>
     Start date <br/>
     End date <br/>
-    Class <br/>
     Gender <br/>
     Country <br/>
     Company <br/>
@@ -59,6 +43,7 @@
 
 <form method=POST action="#" name="form1">
 
+    <!--Wybranie z listy typu osoby-->
     <select id="personlist" name="personlist">
         <?php
             $conn=mysqli_connect("localhost","root");
@@ -76,30 +61,20 @@
     </select>
     <br/>
 
-    <input type="text" id="txtname" name="name"><br/>
-    <input type="text" id="txtlname" name="lastname"><br/>
-    <input type="text" id="txtlname" name="pesel"><br/>
-    <input type="text" id="txtlname" name="email"><br/>
-    <input type="date" value="yyyy-mm-dd" id="sdate" name="sdate"><br/>
+    <!--Imie-->
+    <input type="text" id="txtname" name="name" required><br/>
+    <!--Nazwisko-->
+    <input type="text" id="txtlname" name="lastname" required><br/>
+    <!--Pesel-->
+    <input type="text" id="txtlname" name="pesel" required><br/>
+    <!--Email-->
+    <input type="text" id="txtlname" name="email" required><br/>
+    <!--Data rozpoczęcia-->
+    <input type="date" value="yyyy-mm-dd" id="sdate" name="sdate" required><br/>
+    <!--Data zakończenia-->
     <input type="date" value="yyyy-mm-dd" id="edate" name="edate"><br/>
 
-
-    <select id="classlist" name="classlist">
-        <?php
-            $conn=mysqli_connect("localhost","root");
-            $baza=mysqli_select_db($conn, "graduates");
-            $query="SELECT id_division, division_code FROM division";
-            mysqli_query($conn, "SET NAMES utf8");
-            $results=mysqli_query($conn, $query);
-
-            while($wiersz = mysqli_fetch_row($results)){
-                echo "<option value='".$wiersz[0]."'>".$wiersz[1]."</option>";
-            }
-            mysqli_close($conn);
-        ?>
-    </select>
-    <br/>
-
+    <!--Płeć-->
     <select id="genderlist" name="genderlist">
         <?php
             $conn=mysqli_connect("localhost","root");
@@ -116,7 +91,7 @@
     </select>
     <br/>
 
-
+    <!--Wybór kraju, gdzie obecnie osoba przebywa-->
     <select id="countrylist" name="countrylist">
         <?php
             $conn=mysqli_connect("localhost","root");
@@ -134,12 +109,13 @@
     </select>
     <br/>
 
+    <!--Wybór pracy, w której obecnie osoba pracuje-->
     <select id="complist" name="complist">
-        <option value="null">
+        <option value="null">Brak</option>
         <?php
             $conn=mysqli_connect("localhost","root");
             $baza=mysqli_select_db($conn, "graduates");
-            $query="SELECT id_workplace, name FROM workplace WHERE workplace_type='43'";
+            $query="SELECT id_workplace, name FROM workplace WHERE workplace_type IN('49', '50')";
             mysqli_query($conn, "SET NAMES utf8");
             $results=mysqli_query($conn, $query);
 
@@ -152,12 +128,13 @@
     </select>
     <br/>
 
+    <!--Wybór uczelni, na ktróej obecnie osoba się uczy-->
     <select id="unlist" name="unlist">
-        <option value="null"></option>
+        <option value="null">Brak</option>
         <?php
             $conn=mysqli_connect("localhost","root");
             $baza=mysqli_select_db($conn, "graduates");
-            $query="SELECT id_workplace, name FROM workplace WHERE workplace_type='42'";
+            $query="SELECT id_workplace, name FROM workplace WHERE workplace_type='49'";
             mysqli_query($conn, "SET NAMES utf8");
             $results=mysqli_query($conn, $query);
 
@@ -183,29 +160,38 @@
         $personll = $_POST['personlist'];
         $user_name = $_POST['name'];
         $user_last_name = $_POST['lastname'];
-        $user_pesel = $_POST['pesel'];
-        $user_email = $_POST['email'];
+        $user_pesel = !empty($_POST['pesel']) ? $_POST['pesel'] : null;
+        $user_email = !empty($_POST['email']) ? $_POST['email'] : null;
         $user_sdate = $_POST['sdate'];
-        $user_edate = $_POST['edate'];
-        $clasll = $_POST['classlist'];
+        //$user_edate = !empty($_POST['edate']) ? $_POST['email'] : null;
+		$user_edate = $_POST['edate'];
         $genderll = $_POST['genderlist'];
         $countryll = $_POST['countrylist'];
-        $companyll = $_POST['complist'];
-        $universityll = $_POST['unlist'];
+        $companyll = !empty($_POST['complist']) ? $_POST['complist'] : null;
+        $universityll = !empty($_POST['unlist']) ? $_POST['unlist'] : null;
 
-        $query="INSERT INTO users VALUES(null,'$user_email',null,'$user_name','$user_last_name','$user_pesel','$user_sdate','$user_edate','$clasll','$personll','$genderll','$countryll','$companyll','$universityll')";
+        //NULLIF - był problem z wartością w dacie zakończenia
+        $query="INSERT INTO users VALUES(null, '$user_email' ,null,'$user_name','$user_last_name', $user_pesel ,'$user_sdate', NULLIF('$user_edate','') ,null,'$personll','$genderll','$countryll', $companyll , $universityll)";
         mysqli_query($conn, "SET NAMES utf8");
-        $results=mysqli_query($conn, $query);
-        
-    }else{
-        echo "Nie";
     }
         
+    $results=mysqli_query($conn, $query);
     mysqli_close($conn);
 ?>
 </main>
 <footer>
-
+    <div class="info">
+        <ul>
+            <li>About us</li>
+            <li>Where we are?</li>
+            <li>Our best example</li>
+        </ul>
+    </div>
+    <div class="line"></div>
+    <div class="text">
+        Curabitur sit amet blandit libero, ut vehicula erat. Vestibulum eget fermentum eros. Nulla sit amet rutrum nisi. Praesent vel nisl nec dolor sagittis auctor. Sed sit amet mauris enim. 
+        Nulla gravida commodo tellus non accumsan. Ut non enim sed nibh pharetra vulputate.
+    </div>
 </footer>
 </body>
 </html>
